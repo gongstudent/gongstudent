@@ -5,7 +5,7 @@
 
 <!-- Typing SVG -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=6C63FF&center=true&vCenter=true&multiline=true&repeat=true&random=false&width=600&height=60&lines=🚀+热爱编程%2C+享受创造;🤖+AI+×+全栈+×+创意开发者" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=6C63FF&center=true&vCenter=true&width=600&lines=Build+with+AI+and+Code;Paper-Rewrite-Studio+%7C+StudyFlow" alt="Typing SVG" />
 </a>
 
 </div>
@@ -30,7 +30,8 @@ motto: "用代码构建有趣的世界"
 
 ### 🎯 我正在做什么
 
-- 🔭 正在开发 **StudyFlow** — AI 驱动的智能学习助手
+- 🔭 正在开发 **Paper-Rewrite-Studio** — 本地化论文降重与风险排查工作台
+- 🚀 持续迭代 **StudyFlow** — AI 驱动的智能学习助手
 - 🌱 正在学习 **大模型应用** 和 **RAG 系统**
 - 💡 喜欢将 AI 技术融入到有趣的项目中
 - 🎮 热衷于开发创意小游戏
@@ -72,6 +73,9 @@ motto: "用代码构建有趣的世界"
 
 <div align="center">
 
+<a href="https://github.com/gongstudent/Paper-Rewrite-Studio">
+  <img width="400" src="https://github-readme-stats.vercel.app/api/pin/?username=gongstudent&repo=Paper-Rewrite-Studio&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=6C63FF&icon_color=6C63FF&text_color=c9d1d9" />
+</a>
 <a href="https://github.com/gongstudent/StudyFlow">
   <img width="400" src="https://github-readme-stats.vercel.app/api/pin/?username=gongstudent&repo=StudyFlow&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=6C63FF&icon_color=6C63FF&text_color=c9d1d9" />
 </a>
@@ -89,6 +93,7 @@ motto: "用代码构建有趣的世界"
 
 | 项目 | 描述 | 技术栈 | 链接 |
 |:---:|:---:|:---:|:---:|
+| 📝 **Paper-Rewrite-Studio** | 本地化论文降重与风险排查工作台，支持解析、检测、改写、复检与导出 | React, NestJS, Prisma, SQLite | [📂 Repo](https://github.com/gongstudent/Paper-Rewrite-Studio) |
 | 🤖 **StudyFlow** | AI 驱动的智能学习助手，支持本地/云端大模型 | TypeScript, Ollama | [🔗 Demo](https://gongstudent.github.io/StudyFlow/) |
 | 🐍 **手势贪吃蛇** | 基于 MediaPipe + OpenCV 的手势控制贪吃蛇 | Python, MediaPipe | [🔗 Demo](https://gongstudent.github.io/-gesture-snake-mediapipe-/) |
 | 🔨 **打地鼠** | 趣味 Web 打地鼠小游戏 | JavaScript | [🔗 Demo](https://cursorai-fawn.vercel.app) |
