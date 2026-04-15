@@ -710,7 +710,7 @@
     <script>
         const USERNAME = "gongstudent";
         const REPOS_API = `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`;
-        const MAX_DISPLAY = 6;
+        const MAX_DISPLAY = 100;
 
         const langColor = {
             TypeScript: "#3178c6",
@@ -742,7 +742,7 @@
 
         function normalize(repos) {
             return repos
-                .filter((repo) => !repo.fork && !repo.archived && repo.name.toLowerCase() !== USERNAME.toLowerCase())
+                .filter((repo) => !repo.fork && !repo.archived)
                 .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
         }
 
