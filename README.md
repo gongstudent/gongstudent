@@ -118,7 +118,7 @@ motto: "用代码构建有趣的世界"
 
 <div align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=gongstudent&theme=tokyonight&no-frame=true&no-bg=true&column=7&margin-w=10" />
+<img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=gongstudent&theme=tokyonight" />
 
 </div>
 
