@@ -4,42 +4,37 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gong | 全栈开发者 & AI 爱好者</title>
-    <meta name="description" content="Gong 的个人主页 — 合肥大学，全栈开发者，AI 爱好者。探索我的开源项目和技术世界。" />
+    <title>Gong | 全栈开发者与 AI 爱好者</title>
+    <meta name="description" content="Gong 的个人主页：自动同步 GitHub 项目、展示技能与仓库数据。" />
+    <meta name="theme-color" content="#09101d" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet" />
     <style>
-        /* ===== CSS Reset & Variables ===== */
         *,
         *::before,
         *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         :root {
-            --bg-primary: #0a0a1a;
-            --bg-secondary: #111128;
-            --bg-card: rgba(25, 25, 60, 0.5);
-            --bg-card-hover: rgba(35, 35, 80, 0.7);
-            --text-primary: #e8e8f0;
-            --text-secondary: #a0a0c0;
-            --text-muted: #6a6a90;
-            --accent: #6C63FF;
-            --accent-glow: rgba(108, 99, 255, 0.3);
-            --accent2: #00d4aa;
-            --accent3: #ff6b9d;
-            --gradient-1: linear-gradient(135deg, #6C63FF, #00d4aa);
-            --gradient-2: linear-gradient(135deg, #ff6b9d, #6C63FF);
-            --gradient-3: linear-gradient(135deg, #00d4aa, #6C63FF, #ff6b9d);
-            --border: rgba(108, 99, 255, 0.15);
+            --bg: #09101d;
+            --card: rgba(17, 27, 45, 0.75);
+            --card-hover: rgba(22, 37, 62, 0.92);
+            --line: rgba(148, 181, 226, 0.24);
+            --text: #eaf2ff;
+            --muted: #9fb4d1;
+            --c1: #1d9bf0;
+            --c2: #2dd4bf;
+            --c3: #fb923c;
+            --gradient: linear-gradient(120deg, var(--c1), var(--c2), var(--c3));
             --radius: 16px;
-            --font-main: 'Inter', -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --font-main: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         }
 
         html {
@@ -48,847 +43,541 @@
 
         body {
             font-family: var(--font-main);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            overflow-x: hidden;
+            color: var(--text);
+            background: radial-gradient(circle at 10% 0%, #16315c 0, var(--bg) 48%), var(--bg);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* ===== Animated Background ===== */
-        .bg-animation {
+        .bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+            inset: 0;
             pointer-events: none;
+            z-index: 0;
             overflow: hidden;
         }
 
-        .bg-orb {
+        .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            animation: floatOrb 20s ease-in-out infinite;
+            filter: blur(75px);
+            opacity: 0.16;
+            animation: float 18s ease-in-out infinite;
         }
 
-        .bg-orb:nth-child(1) {
-            width: 500px;
-            height: 500px;
-            background: var(--accent);
-            top: -10%;
+        .orb.a {
+            width: 300px;
+            height: 300px;
             left: -5%;
-            animation-duration: 25s;
+            top: -5%;
+            background: var(--c2);
         }
 
-        .bg-orb:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            background: var(--accent2);
-            top: 50%;
-            right: -10%;
-            animation-duration: 30s;
-            animation-delay: -5s;
+        .orb.b {
+            width: 380px;
+            height: 380px;
+            right: -8%;
+            top: 35%;
+            background: var(--c1);
+            animation-delay: -6s;
         }
 
-        .bg-orb:nth-child(3) {
-            width: 350px;
-            height: 350px;
-            background: var(--accent3);
-            bottom: -5%;
+        .orb.c {
+            width: 280px;
+            height: 280px;
             left: 30%;
-            animation-duration: 22s;
+            bottom: -8%;
+            background: var(--c3);
             animation-delay: -10s;
         }
 
-        @keyframes floatOrb {
+        @keyframes float {
 
             0%,
             100% {
                 transform: translate(0, 0) scale(1);
             }
 
-            25% {
-                transform: translate(50px, -80px) scale(1.1);
-            }
-
             50% {
-                transform: translate(-30px, 50px) scale(0.9);
-            }
-
-            75% {
-                transform: translate(80px, 30px) scale(1.05);
+                transform: translate(32px, -42px) scale(1.06);
             }
         }
 
-        /* ===== Stars ===== */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-
-            0%,
-            100% {
-                opacity: 0.2;
-            }
-
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        /* ===== Layout ===== */
         .container {
-            max-width: 1100px;
+            width: min(1120px, 92vw);
             margin: 0 auto;
-            padding: 0 24px;
             position: relative;
             z-index: 1;
         }
 
-        /* ===== Navigation ===== */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 100;
-            backdrop-filter: blur(20px);
-            background: rgba(10, 10, 26, 0.7);
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
+            z-index: 20;
+            backdrop-filter: blur(14px);
+            background: rgba(9, 16, 29, 0.72);
+            border-bottom: 1px solid var(--line);
         }
 
-        nav .container {
+        .nav-inner {
+            min-height: 68px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 64px;
         }
 
-        .nav-logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
+        .logo {
+            font-weight: 800;
+            font-size: 1.12rem;
+            letter-spacing: 0.2px;
+        }
+
+        .logo span {
+            color: var(--c2);
         }
 
         .nav-links {
-            display: flex;
-            gap: 32px;
             list-style: none;
+            display: flex;
+            gap: 20px;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            color: var(--muted);
+            font-size: 0.92rem;
             font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
+            transition: color 0.2s ease;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-1);
-            transition: width 0.3s;
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--text);
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* ===== Hero Section ===== */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 64px;
-        }
-
-        .hero-content {
+            min-height: 100svh;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            place-items: center;
+            padding-top: 68px;
+        }
+
+        .hero-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 34px;
             align-items: center;
         }
 
-        .hero-text {
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-badge {
+        .pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
-            background: rgba(108, 99, 255, 0.1);
-            border: 1px solid rgba(108, 99, 255, 0.3);
+            margin-bottom: 18px;
+            padding: 6px 14px;
             border-radius: 999px;
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 24px;
+            border: 1px solid rgba(45, 212, 191, 0.45);
+            background: rgba(45, 212, 191, 0.1);
+            color: #c9fbf2;
+            font-size: 0.82rem;
         }
 
-        .hero-badge .dot {
+        .pulse {
             width: 8px;
             height: 8px;
-            background: var(--accent2);
             border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
+            background: var(--c2);
+            animation: pulse 1.8s ease-in-out infinite;
         }
 
         @keyframes pulse {
 
             0%,
             100% {
-                opacity: 1;
                 transform: scale(1);
+                opacity: 1;
             }
 
             50% {
-                opacity: 0.5;
-                transform: scale(0.8);
+                transform: scale(0.75);
+                opacity: 0.62;
             }
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
             line-height: 1.1;
-            margin-bottom: 8px;
-            letter-spacing: -1.5px;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
         }
 
-        .hero h1 .gradient {
-            background: var(--gradient-1);
+        h1 span {
+            background: var(--gradient);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
         }
 
-        .hero .subtitle {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            font-weight: 300;
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.06rem;
+            margin-bottom: 12px;
         }
 
-        .hero .description {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            max-width: 480px;
-            line-height: 1.8;
+        .desc {
+            color: var(--muted);
+            max-width: 60ch;
+            margin-bottom: 24px;
         }
 
-        .hero-buttons {
+        .actions {
             display: flex;
-            gap: 16px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
+            justify-content: center;
+            padding: 11px 18px;
             border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            font-size: 0.94rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
-        .btn-primary {
-            background: var(--gradient-1);
-            color: white;
-            box-shadow: 0 4px 20px var(--accent-glow);
+        .btn.primary {
+            color: #062537;
+            background: var(--gradient);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--accent-glow);
+        .btn.secondary {
+            color: var(--text);
+            background: var(--card);
+            border-color: var(--line);
         }
 
-        .btn-secondary {
-            background: var(--bg-card);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-card-hover);
+        .btn:hover,
+        .btn:focus-visible {
             transform: translateY(-2px);
         }
 
-        /* Hero Visual */
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .code-window {
-            width: 100%;
-            max-width: 460px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+        .about {
+            background: var(--card);
+            border: 1px solid var(--line);
             border-radius: var(--radius);
             overflow: hidden;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
-        .code-header {
+        .about-head {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 14px 18px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--line);
+            padding: 12px 14px;
         }
 
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .code-dot.red {
-            background: #ff5f57;
-        }
-
-        .code-dot.yellow {
-            background: #ffbd2e;
-        }
-
-        .code-dot.green {
-            background: #28c840;
-        }
-
-        .code-title {
-            margin-left: auto;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-        }
-
-        .code-body {
-            padding: 20px;
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            line-height: 2;
-        }
-
-        .code-line {
-            display: flex;
-            gap: 12px;
-        }
-
-        .code-key {
-            color: var(--accent3);
-        }
-
-        .code-value {
-            color: var(--accent2);
-        }
-
-        .code-string {
-            color: #e8d87a;
-        }
-
-        .code-bracket {
-            color: var(--text-muted);
-        }
-
-        .code-comment {
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* ===== Section Common ===== */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            padding: 4px 14px;
-            background: rgba(108, 99, 255, 0.1);
-            border: 1px solid rgba(108, 99, 255, 0.2);
-            border-radius: 999px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* ===== Skills Section ===== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .skill-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px 24px;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .skill-card:hover {
-            background: var(--bg-card-hover);
-            transform: translateY(-4px);
-            border-color: rgba(108, 99, 255, 0.3);
-        }
-
-        .skill-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .skill-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            padding: 4px 12px;
-            background: rgba(108, 99, 255, 0.08);
-            border: 1px solid rgba(108, 99, 255, 0.15);
-            border-radius: 8px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            transition: all 0.3s;
-        }
-
-        .skill-card:hover .skill-tag {
-            border-color: rgba(108, 99, 255, 0.3);
-            color: var(--text-primary);
-        }
-
-        /* ===== Projects Section ===== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(108, 99, 255, 0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(108, 99, 255, 0.3);
-            box-shadow: 0 12px 40px rgba(108, 99, 255, 0.1);
-        }
-
-        .project-card:hover::after {
-            opacity: 1;
-        }
-
-        .project-card>* {
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-header {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .project-emoji {
-            font-size: 2rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .project-link {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            background: rgba(108, 99, 255, 0.08);
-            border: 1px solid rgba(108, 99, 255, 0.15);
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-        }
-
-        .project-link:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-
-        .project-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .project-card .project-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            flex: 1;
-            line-height: 1.7;
-        }
-
-        .project-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .project-lang {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .lang-dot {
+        .dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
         }
 
-        .lang-ts {
-            background: #3178c6;
+        .dot.r {
+            background: #ef4444;
         }
 
-        .lang-py {
-            background: #3776ab;
+        .dot.y {
+            background: #f59e0b;
         }
 
-        .lang-js {
-            background: #f7df1e;
+        .dot.g {
+            background: #10b981;
         }
 
-        .project-stars {
+        .about-title {
+            margin-left: auto;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: var(--muted);
+        }
+
+        .about-body {
+            padding: 15px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.84rem;
+            line-height: 1.9;
+            color: #d8e7ff;
+        }
+
+        .k {
+            color: #7dd3fc;
+        }
+
+        .s {
+            color: #fdba74;
+        }
+
+        section {
+            padding: 88px 0;
+        }
+
+        .head {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .head .tagline {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(45, 212, 191, 0.4);
+            background: rgba(45, 212, 191, 0.08);
+            color: #c9fbf2;
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .head h2 {
+            font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .head p {
+            color: var(--muted);
+            max-width: 58ch;
+            margin: 0 auto;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 22px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.04rem;
+        }
+
+        .chips {
             display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        /* ===== Stats Section ===== */
-        .stats-container {
+        .chip {
+            padding: 3px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(148, 181, 226, 0.28);
+            color: #bdd0ea;
+            background: rgba(148, 181, 226, 0.08);
+            font-size: 0.78rem;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .project {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            align-items: center;
+            gap: 12px;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
-        .stats-row {
-            display: flex;
-            gap: 24px;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .stat-box {
-            flex: 1;
-            max-width: 320px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 36px 24px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-        }
-
-        .stat-box:hover {
+        .project:hover {
             transform: translateY(-4px);
-            border-color: rgba(108, 99, 255, 0.3);
+            background: var(--card-hover);
         }
 
-        .stat-number {
-            font-size: 3rem;
+        .project h3 {
+            font-size: 1.06rem;
+            overflow-wrap: anywhere;
+        }
+
+        .project p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            min-height: 58px;
+        }
+
+        .meta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            color: #c2d4ec;
+        }
+
+        .lang-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .links {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .link {
+            text-decoration: none;
+            font-size: 0.82rem;
+            color: #e0f6ff;
+            border: 1px solid rgba(148, 181, 226, 0.3);
+            border-radius: 10px;
+            padding: 7px 10px;
+            background: rgba(148, 181, 226, 0.08);
+        }
+
+        .link:hover,
+        .link:focus-visible {
+            border-color: rgba(45, 212, 191, 0.5);
+            background: rgba(45, 212, 191, 0.14);
+        }
+
+        .status {
+            margin-top: 14px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .status.error {
+            color: #fda4af;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .stat {
+            text-align: center;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 24px 14px;
+        }
+
+        .num {
+            font-size: clamp(2.1rem, 4.6vw, 2.7rem);
+            line-height: 1;
+            margin-bottom: 6px;
             font-weight: 800;
-            background: var(--gradient-1);
+            background: var(--gradient);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            margin-bottom: 8px;
+            background-clip: text;
+            color: transparent;
         }
 
-        .stat-label {
-            color: var(--text-muted);
+        .label {
+            color: var(--muted);
             font-size: 0.9rem;
         }
 
-        .stats-github {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .stats-github img {
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-        }
-
-        /* ===== Footer ===== */
         footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
+            padding: 28px 0 34px;
+            border-top: 1px solid var(--line);
             text-align: center;
+            color: var(--muted);
+            font-size: 0.84rem;
         }
 
-        .footer-text {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .footer-text a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .footer-heart {
-            color: var(--accent3);
-        }
-
-        /* ===== Animations ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
+        .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            transform: translateY(20px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
 
-        .animate-on-scroll.visible {
+        .reveal.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* ===== Responsive ===== */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .description {
-                margin: 0 auto 32px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .code-window {
-                max-width: 360px;
-            }
-
-            .skills-grid {
+        @media (max-width: 980px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
             }
 
-            .projects-grid {
+            .skills,
+            .projects,
+            .stats {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .container {
+                width: min(1120px, 94vw);
             }
 
             .nav-links {
-                gap: 20px;
-            }
-
-            .nav-links a {
-                font-size: 0.8rem;
-            }
-
-            .stats-row {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .stat-box {
-                max-width: 100%;
-                width: 100%;
-            }
-
-            .stats-github {
-                flex-direction: column;
-                align-items: center;
+                display: none;
             }
         }
 
-        /* ===== Cursor Blink ===== */
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1.1em;
-            background: var(--accent);
-            margin-left: 2px;
-            animation: blink 1s step-end infinite;
-            vertical-align: text-bottom;
-        }
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
 
-        @keyframes blink {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
 
-            0%,
-            100% {
+            .reveal {
                 opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
+                transform: none;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Background -->
-    <div class="bg-animation">
-        <div class="bg-orb"></div>
-        <div class="bg-orb"></div>
-        <div class="bg-orb"></div>
+    <div class="bg" aria-hidden="true">
+        <div class="orb a"></div>
+        <div class="orb b"></div>
+        <div class="orb c"></div>
     </div>
-    <div class="stars" id="stars"></div>
 
-    <!-- Navigation -->
     <nav>
-        <div class="container">
-            <div class="nav-logo">Gong.dev</div>
+        <div class="container nav-inner">
+            <div class="logo">Gong<span>.dev</span></div>
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
                 <li><a href="#skills">技能</a></li>
@@ -898,306 +587,317 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <span class="dot"></span>
-                        Ready to collaborate
-                    </div>
-                    <h1>你好，我是<br /><span class="gradient">Gong</span> 👋</h1>
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+                <div class="reveal">
+                    <p class="pill"><span class="pulse"></span>自动同步 GitHub 仓库</p>
+                    <h1>你好，我是 <span>Gong</span></h1>
                     <p class="subtitle">合肥大学 · 全栈开发者 · AI 爱好者</p>
-                    <p class="description">
-                        热爱编程，享受用代码将创意变为现实的过程。专注于 AI 应用开发、Web 全栈以及创意游戏项目，持续探索技术的无限可能。
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="https://github.com/gongstudent" class="btn btn-primary" target="_blank">
-                            ⭐ GitHub 主页
-                        </a>
-                        <a href="#projects" class="btn btn-secondary">
-                            🚀 查看项目
-                        </a>
+                    <p class="desc">我喜欢把想法快速做成可运行产品，主要方向是 AI 应用、Web 全栈和交互型项目。下面的项目和统计会从 GitHub 实时同步，不用手动维护。</p>
+                    <div class="actions">
+                        <a class="btn primary" href="https://github.com/gongstudent" target="_blank"
+                            rel="noopener noreferrer">查看 GitHub</a>
+                        <a class="btn secondary" href="#projects">浏览项目</a>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="code-window">
-                        <div class="code-header">
-                            <span class="code-dot red"></span>
-                            <span class="code-dot yellow"></span>
-                            <span class="code-dot green"></span>
-                            <span class="code-title">about.json</span>
+                <aside class="about reveal" aria-label="个人信息">
+                    <div class="about-head">
+                        <span class="dot r"></span>
+                        <span class="dot y"></span>
+                        <span class="dot g"></span>
+                        <span class="about-title">about.json</span>
+                    </div>
+                    <div class="about-body">
+                        <div>{</div>
+                        <div>&nbsp;&nbsp;<span class="k">"name"</span>: <span class="s">"Gong"</span>,</div>
+                        <div>&nbsp;&nbsp;<span class="k">"role"</span>: <span class="s">"Full-Stack Developer"</span>,</div>
+                        <div>&nbsp;&nbsp;<span class="k">"focus"</span>: <span class="s">"AI Apps / Web / Creative"</span>,</div>
+                        <div>&nbsp;&nbsp;<span class="k">"langs"</span>: <span class="s">["Python","TypeScript","JavaScript"]</span></div>
+                        <div>}</div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <header class="head reveal">
+                    <p class="tagline">Skills</p>
+                    <h2>技术栈</h2>
+                    <p>围绕“可交付、可维护”做工程实现与 AI 产品开发。</p>
+                </header>
+                <div class="skills">
+                    <article class="card reveal">
+                        <h3>编程语言</h3>
+                        <div class="chips">
+                            <span class="chip">Python</span>
+                            <span class="chip">TypeScript</span>
+                            <span class="chip">JavaScript</span>
+                            <span class="chip">HTML5</span>
+                            <span class="chip">CSS3</span>
                         </div>
-                        <div class="code-body">
-                            <div class="code-line"><span class="code-bracket">{</span></div>
-                            <div class="code-line">&nbsp;&nbsp;<span class="code-key">"name"</span>: <span
-                                    class="code-string">"Gong"</span>,</div>
-                            <div class="code-line">&nbsp;&nbsp;<span class="code-key">"school"</span>: <span
-                                    class="code-string">"合肥大学"</span>,</div>
-                            <div class="code-line">&nbsp;&nbsp;<span class="code-key">"role"</span>: <span
-                                    class="code-string">"全栈开发者"</span>,</div>
-                            <div class="code-line">&nbsp;&nbsp;<span class="code-key">"passion"</span>: <span
-                                    class="code-string">"AI × 创意"</span>,</div>
-                            <div class="code-line">&nbsp;&nbsp;<span class="code-key">"languages"</span>: [</div>
-                            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"Python"</span>,
-                                <span class="code-string">"TypeScript"</span>,</div>
-                            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"JavaScript"</span>
-                            </div>
-                            <div class="code-line">&nbsp;&nbsp;],</div>
-                            <div class="code-line">&nbsp;&nbsp;<span class="code-key">"motto"</span>: <span
-                                    class="code-string">"用代码构建有趣的世界"</span><span class="cursor"></span></div>
-                            <div class="code-line"><span class="code-bracket">}</span></div>
+                    </article>
+                    <article class="card reveal">
+                        <h3>框架与平台</h3>
+                        <div class="chips">
+                            <span class="chip">React</span>
+                            <span class="chip">Vue</span>
+                            <span class="chip">NestJS</span>
+                            <span class="chip">Node.js</span>
+                            <span class="chip">Vite</span>
+                            <span class="chip">OpenCV</span>
+                            <span class="chip">MediaPipe</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">Skills</span>
-                <h2>技术栈</h2>
-                <p>从前端到后端，从传统开发到 AI 应用</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card animate-on-scroll">
-                    <span class="skill-icon">💻</span>
-                    <h3>编程语言</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                    </div>
-                </div>
-                <div class="skill-card animate-on-scroll">
-                    <span class="skill-icon">🧩</span>
-                    <h3>框架 & 库</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">Vite</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">OpenCV</span>
-                        <span class="skill-tag">MediaPipe</span>
-                    </div>
-                </div>
-                <div class="skill-card animate-on-scroll">
-                    <span class="skill-icon">🤖</span>
-                    <h3>AI & 工具</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Ollama</span>
-                        <span class="skill-tag">RAG</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">VS Code</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">Projects</span>
-                <h2>精选项目</h2>
-                <p>每一个项目都是一次全新的探索</p>
-            </div>
-            <div class="projects-grid">
-                <!-- StudyFlow -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <span class="project-emoji">🤖</span>
-                        <div class="project-links">
-                            <a href="https://gongstudent.github.io/StudyFlow/" class="project-link" target="_blank"
-                                title="Demo">🔗</a>
-                            <a href="https://github.com/gongstudent/StudyFlow" class="project-link" target="_blank"
-                                title="Code">📂</a>
+                    </article>
+                    <article class="card reveal">
+                        <h3>AI 与工具</h3>
+                        <div class="chips">
+                            <span class="chip">Ollama</span>
+                            <span class="chip">RAG</span>
+                            <span class="chip">Prisma</span>
+                            <span class="chip">SQLite</span>
+                            <span class="chip">Git</span>
+                            <span class="chip">Docker</span>
                         </div>
-                    </div>
-                    <h3>StudyFlow</h3>
-                    <p class="project-desc">AI 驱动的智能学习助手。支持本地大模型 (Ollama) 或云端 GitHub Models，无缝进行文档阅读、沉浸式长文翻译、智能摘要与深度对话。
-                    </p>
-                    <div class="project-meta">
-                        <span class="project-lang"><span class="lang-dot lang-ts"></span> TypeScript</span>
-                        <span class="project-stars">⭐ 1</span>
-                    </div>
-                </div>
-
-                <!-- Gesture Snake -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <span class="project-emoji">🐍</span>
-                        <div class="project-links">
-                            <a href="https://gongstudent.github.io/-gesture-snake-mediapipe-/" class="project-link"
-                                target="_blank" title="Demo">🔗</a>
-                            <a href="https://github.com/gongstudent/-gesture-snake-mediapipe-" class="project-link"
-                                target="_blank" title="Code">📂</a>
-                        </div>
-                    </div>
-                    <h3>手势贪吃蛇</h3>
-                    <p class="project-desc">基于 MediaPipe + OpenCV 的实时手势控制贪吃蛇。支持 solutions 与 tasks 后端，增强边缘鲁棒性，全屏顺滑渲染。</p>
-                    <div class="project-meta">
-                        <span class="project-lang"><span class="lang-dot lang-py"></span> Python</span>
-                        <span class="project-stars">⭐ 2</span>
-                    </div>
-                </div>
-
-                <!-- Whack-a-Mole -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <span class="project-emoji">🔨</span>
-                        <div class="project-links">
-                            <a href="https://cursorai-fawn.vercel.app" class="project-link" target="_blank"
-                                title="Demo">🔗</a>
-                            <a href="https://github.com/gongstudent/cursorai-" class="project-link" target="_blank"
-                                title="Code">📂</a>
-                        </div>
-                    </div>
-                    <h3>打地鼠</h3>
-                    <p class="project-desc">趣味 Web 打地鼠小游戏，挑战你的反应速度！简洁优雅的界面设计，流畅的游戏体验。</p>
-                    <div class="project-meta">
-                        <span class="project-lang"><span class="lang-dot lang-js"></span> JavaScript</span>
-                        <span class="project-stars">⭐ 2</span>
-                    </div>
-                </div>
-
-                <!-- Tower Defense -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-header">
-                        <span class="project-emoji">🏰</span>
-                        <div class="project-links">
-                            <a href="https://github.com/gongstudent/html5-tower-defense-game" class="project-link"
-                                target="_blank" title="Code">📂</a>
-                        </div>
-                    </div>
-                    <h3>塔防游戏</h3>
-                    <p class="project-desc">基于 HTML5 Canvas 开发的经典塔防游戏。丰富的防御塔种类、多波次敌人进攻，策略性满满。</p>
-                    <div class="project-meta">
-                        <span class="project-lang"><span class="lang-dot lang-js"></span> JavaScript</span>
-                        <span class="project-stars">⭐ 1</span>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats -->
-    <section id="stats">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">Statistics</span>
-                <h2>GitHub 统计</h2>
-                <p>用数据记录成长的足迹</p>
+        <section id="projects">
+            <div class="container">
+                <header class="head reveal">
+                    <p class="tagline">Projects</p>
+                    <h2>项目同步展示</h2>
+                    <p>按最近更新时间自动拉取展示，新增仓库后这里会自动变化。</p>
+                </header>
+                <div class="projects" id="projectsGrid" aria-live="polite"></div>
+                <p class="status" id="projectsStatus">正在同步 GitHub 仓库...</p>
             </div>
-            <div class="stats-container">
-                <div class="stats-row animate-on-scroll">
-                    <div class="stat-box">
-                        <span class="stat-number" id="repoCount">4</span>
-                        <span class="stat-label">公开仓库</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-number" id="starCount">6</span>
-                        <span class="stat-label">获得 Stars</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-number" id="langCount">3</span>
-                        <span class="stat-label">编程语言</span>
-                    </div>
-                </div>
-                <div class="stats-github animate-on-scroll">
-                    <img src="https://github-readme-stats.vercel.app/api?username=gongstudent&show_icons=true&theme=tokyonight&hide_border=true&bg_color=19193c&title_color=6C63FF&icon_color=6C63FF&text_color=c9d1d9&count_private=true"
-                        alt="GitHub Stats" height="180" />
-                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=gongstudent&theme=tokyonight&hide_border=true&background=19193c&ring=6C63FF&fire=6C63FF&currStreakLabel=6C63FF"
-                        alt="GitHub Streak" height="180" />
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
+        <section id="stats">
+            <div class="container">
+                <header class="head reveal">
+                    <p class="tagline">Stats</p>
+                    <h2>仓库数据</h2>
+                    <p>自动统计公开项目数、累计 Star 和主要语言数。</p>
+                </header>
+                <div class="stats">
+                    <article class="stat reveal">
+                        <div class="num" id="repoCount">0</div>
+                        <p class="label">公开项目</p>
+                    </article>
+                    <article class="stat reveal">
+                        <div class="num" id="starCount">0</div>
+                        <p class="label">累计 Stars</p>
+                    </article>
+                    <article class="stat reveal">
+                        <div class="num" id="langCount">0</div>
+                        <p class="label">主要语言</p>
+                    </article>
+                </div>
+                <p class="status" id="lastSync">最后同步：等待中</p>
+            </div>
+        </section>
+    </main>
+
     <footer>
-        <div class="container">
-            <p class="footer-text">
-                Built with <span class="footer-heart">❤️</span> by
-                <a href="https://github.com/gongstudent" target="_blank">Gong</a>
-                · © 2026
-            </p>
-        </div>
+        <div class="container">Built by Gong · © 2026</div>
     </footer>
 
     <script>
-        // Generate stars
-        (function () {
-            const starsEl = document.getElementById('stars');
-            for (let i = 0; i < 80; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                star.style.animationDuration = (2 + Math.random() * 3) + 's';
-                star.style.width = star.style.height = (1 + Math.random() * 2) + 'px';
-                starsEl.appendChild(star);
-            }
-        })();
+        const USERNAME = "gongstudent";
+        const REPOS_API = `https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=updated`;
+        const MAX_DISPLAY = 6;
 
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        const langColor = {
+            TypeScript: "#3178c6",
+            JavaScript: "#f7df1e",
+            Python: "#3776ab",
+            HTML: "#e34f26",
+            CSS: "#1572b6",
+            Shell: "#89e051"
+        };
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-
-        // Counter animation
-        function animateCounter(el, target) {
-            let current = 0;
-            const step = Math.ceil(target / 30);
-            const interval = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(interval);
-                }
-                el.textContent = current;
-            }, 40);
+        function emojiByLang(lang) {
+            const map = {
+                TypeScript: "🧩",
+                JavaScript: "⚡",
+                Python: "🐍",
+                HTML: "🌐",
+                CSS: "🎨"
+            };
+            return map[lang] || "🚀";
         }
 
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.stat-number');
-                    counters.forEach(c => {
-                        const val = parseInt(c.textContent);
-                        c.textContent = '0';
-                        animateCounter(c, val);
-                    });
-                    statsObserver.unobserve(entry.target);
+        function formatDate(input) {
+            return new Intl.DateTimeFormat("zh-CN", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }).format(new Date(input));
+        }
+
+        function normalize(repos) {
+            return repos
+                .filter((repo) => !repo.fork && !repo.archived && repo.name.toLowerCase() !== USERNAME.toLowerCase())
+                .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+        }
+
+        function makeProject(repo) {
+            const language = repo.language || "Other";
+            const desc = repo.description ? repo.description.trim() : "这个项目正在完善中，欢迎查看源码。";
+            const color = langColor[repo.language] || "#94a3b8";
+            const hasDemo = repo.homepage && repo.homepage.trim();
+
+            const card = document.createElement("article");
+            card.className = "project reveal";
+
+            const title = document.createElement("h3");
+            title.textContent = `${emojiByLang(repo.language)} ${repo.name}`;
+
+            const paragraph = document.createElement("p");
+            paragraph.textContent = desc;
+
+            const meta = document.createElement("div");
+            meta.className = "meta";
+
+            const langItem = document.createElement("span");
+            const dot = document.createElement("span");
+            dot.className = "lang-dot";
+            dot.style.background = color;
+            langItem.append(dot, ` ${language}`);
+
+            const starItem = document.createElement("span");
+            starItem.textContent = `⭐ ${repo.stargazers_count}`;
+
+            const updateItem = document.createElement("span");
+            updateItem.textContent = `更新于 ${formatDate(repo.pushed_at)}`;
+
+            meta.append(langItem, starItem, updateItem);
+
+            const links = document.createElement("div");
+            links.className = "links";
+
+            if (hasDemo) {
+                const demo = document.createElement("a");
+                demo.className = "link";
+                demo.href = repo.homepage;
+                demo.target = "_blank";
+                demo.rel = "noopener noreferrer";
+                demo.textContent = "在线预览";
+                links.append(demo);
+            }
+
+            const code = document.createElement("a");
+            code.className = "link";
+            code.href = repo.html_url;
+            code.target = "_blank";
+            code.rel = "noopener noreferrer";
+            code.textContent = "源码仓库";
+            links.append(code);
+
+            card.append(title, paragraph, meta, links);
+            return card;
+        }
+
+        function animateNum(el, target) {
+            const total = Number.isFinite(target) ? target : 0;
+            const steps = 36;
+            const inc = total / steps;
+            let value = 0;
+            let count = 0;
+            const timer = setInterval(() => {
+                count += 1;
+                value += inc;
+                if (count >= steps) {
+                    clearInterval(timer);
+                    el.textContent = String(total);
+                    return;
                 }
-            });
-        }, { threshold: 0.3 });
+                el.textContent = String(Math.round(value));
+            }, 16);
+        }
 
-        const statsRow = document.querySelector('.stats-row');
-        if (statsRow) statsObserver.observe(statsRow);
+        function updateStats(repos) {
+            const repoCount = repos.length;
+            const stars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
+            const langCount = new Set(repos.map((repo) => repo.language).filter(Boolean)).size;
+            animateNum(document.getElementById("repoCount"), repoCount);
+            animateNum(document.getElementById("starCount"), stars);
+            animateNum(document.getElementById("langCount"), langCount);
+        }
 
-        // Smooth nav
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+        async function syncRepos() {
+            const grid = document.getElementById("projectsGrid");
+            const status = document.getElementById("projectsStatus");
+            const lastSync = document.getElementById("lastSync");
+
+            try {
+                const response = await fetch(REPOS_API, {
+                    headers: { Accept: "application/vnd.github+json" }
+                });
+                if (!response.ok) throw new Error(`GitHub API ${response.status}`);
+                const raw = await response.json();
+                const repos = normalize(Array.isArray(raw) ? raw : []);
+                const shown = repos.slice(0, MAX_DISPLAY);
+
+                grid.innerHTML = "";
+                shown.forEach((repo) => grid.appendChild(makeProject(repo)));
+
+                if (shown.length === 0) {
+                    status.textContent = "暂无可展示项目。";
+                } else {
+                    status.innerHTML = `已同步 ${repos.length} 个项目，当前展示最近 ${shown.length} 个。<a class="link" href="https://github.com/${USERNAME}?tab=repositories" target="_blank" rel="noopener noreferrer">查看全部</a>`;
+                }
+
+                updateStats(repos);
+                lastSync.textContent = `最后同步：${formatDate(new Date())}`;
+                reveal();
+            } catch (err) {
+                status.classList.add("error");
+                status.textContent = "同步失败，请稍后刷新重试。";
+                lastSync.textContent = "最后同步：失败";
+                console.error(err);
+            }
+        }
+
+        function setupAnchorScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach((a) => {
+                a.addEventListener("click", (e) => {
+                    const id = a.getAttribute("href");
+                    const target = document.querySelector(id);
+                    if (!target) return;
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                });
             });
-        });
+        }
+
+        function reveal() {
+            const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (reduce) {
+                document.querySelectorAll(".reveal").forEach((el) => el.classList.add("show"));
+                return;
+            }
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll(".reveal").forEach((el) => {
+                if (!el.classList.contains("show")) io.observe(el);
+            });
+        }
+
+        reveal();
+        setupAnchorScroll();
+        syncRepos();
     </script>
 </body>
 
